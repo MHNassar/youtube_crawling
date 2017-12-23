@@ -22,14 +22,23 @@ Crawl videos from YouTube channel/playlist  and save it in database
 
 ```
 git clone git@github.com:MHNassar/youtube_crawling.git
-
+```
+* Run This Commend to install packages 
+```
+sudo pip install -r requirements.txt
 ```
 * import youtupe_video.sql in mysql database
-* Change you database server configurations in databaseFunctions
+
+* Change you database server configurations in config.py
 
 ```
-MySQLdb.connect("Host", "username", "password", "database_name")
+database_connect = {
+    "db_host": "localhost",  # Host Name
+    "db_user": "root",  # Database user
+    "user_pass": "root",  # Password
+    "db_name": "youtupe_video",  # database Name
 
+}
 ```
 
 
@@ -51,9 +60,10 @@ MySQLdb.connect("Host", "username", "password", "database_name")
 > 3 main modules . module allows you to logically organize your Python code .
 Grouping related code into a module makes the code easier to understand and use .
 
-* main Start to program
-* helpFunctions include functions help us work on videos (playlist / channels )
-* databaseFunctions include functions help us work on database  connect and insert data
+* config.py include database configurations and imported Modules 
+* main.py Start to program
+* helpFunctions.py include functions help us work on videos (playlist / channels )
+* databaseFunctions.py include functions help us work on database  connect and insert data
 
 ### Prerequisites
 

@@ -1,0 +1,4 @@
+pafy
+youtube-dl
+MySQL-python
+bs4

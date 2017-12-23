@@ -1,10 +1,4 @@
-import pafy
-import urllib
-import sys
-from urllib2 import urlopen
-from bs4 import BeautifulSoup
-import types
-import re
+import config
 
 
 def progress(count, total, status=''):
@@ -14,36 +8,36 @@ def progress(count, total, status=''):
     percents = round(100.0 * count / float(total), 1)
     bar = '#' * filled_len + '-' * (bar_len - filled_len)
 
-    sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
-    sys.stdout.flush()
+    config.sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
+    config.sys.stdout.flush()
 
 
 def get_channel_videos_list(url):
     try:
-        content = urlopen(url).read()  # Open the channel page
-        soup = BeautifulSoup(content, 'lxml')  # Soupify it
+        content = config.urlopen(url).read()  # Open the channel page
+        soup = config.BeautifulSoup(content, 'lxml')  # Soupify it
         tags = soup.find_all('a', {
             'class': 'yt-uix-sessionlink yt-uix-tile-link  spf-link  yt-ui-ellipsis yt-ui-ellipsis-2'})  # Find all elements that are video title
         urls = ["https://www.youtube.com" + url.get('href') for url in tags]  # Make a list using list comprehension
         return urls
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)
 
 
 def get_playlist_videos_list(url):
     try:
-        playlist = pafy.get_playlist(url)
+        playlist = config.pafy.get_playlist(url)
         playlist_items = playlist['items']
         return playlist_items
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)
 
 
 def download_image(video, type):
     try:
-        file_opener = urllib.URLopener()
+        file_opener = config.urllib.URLopener()
         path = type + "/"
         filename = video['video_id'] + ".jpg"
         file_opener.retrieve(video[type], path + filename)
@@ -55,8 +49,8 @@ def download_image(video, type):
 
 def get_video_data(video):
     try:
-        if isinstance(video, types.StringTypes):
-            video = pafy.new(video)
+        if isinstance(video, config.types.StringTypes):
+            video = config.pafy.new(video)
         else:
             video = video['pafy']
 
@@ -74,20 +68,20 @@ def get_video_data(video):
         return video_data
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)
 
 
 def check_youtube_url(url):
     try:
         pattern = "^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+"
-        valid_url = re.match(pattern, url, 0)
+        valid_url = config.re.match(pattern, url, 0)
         if valid_url:
             return get_list_of_items(url)
         else:
             return []
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)
 
 
 def get_list_of_items(url):
@@ -101,4 +95,4 @@ def get_list_of_items(url):
         return list_items
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)

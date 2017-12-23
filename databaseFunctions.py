@@ -1,5 +1,4 @@
-import MySQLdb
-import sys
+import config
 
 '''
 Connect in Mysql database 
@@ -8,12 +7,17 @@ Connect in Mysql database
 
 def connect_db():
     try:
-        db = MySQLdb.connect("localhost", "root", "root", "youtupe_video")
+        db = config.MySQLdb.connect(
+            config.database_connect['db_host'],
+            config.database_connect['db_user'],
+            config.database_connect['user_pass'],
+            config.database_connect['db_name']
+        )
         cursor = db.cursor()
         return [db, cursor]
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)
 
 
 '''
@@ -31,4 +35,4 @@ def save_video_database(data):
         cursor[0].commit()
     except Exception, reason:
         print "sorry there is %s" % (reason)
-        sys.exit(1)
+        config.sys.exit(1)

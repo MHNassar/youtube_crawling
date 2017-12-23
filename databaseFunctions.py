@@ -1,6 +1,10 @@
 import MySQLdb
 import sys
 
+'''
+Connect in Mysql database 
+'''
+
 
 def connect_db():
     try:
@@ -10,6 +14,11 @@ def connect_db():
     except Exception, reason:
         print "sorry there is %s" % (reason)
         sys.exit(1)
+
+
+'''
+Save video data  in Mysql database 
+'''
 
 
 def save_video_database(data):

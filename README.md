@@ -4,14 +4,14 @@ Crawl videos from YouTube channel/playlist  and save it in database
 
 ## Project Goals
 
-*Crawl videos from YouTube channel/playlist
-*Retrieve videos details and save them to database
-*The crawler should crawl periodically and update with new data
+* Crawl videos from YouTube channel/playlist
+* Retrieve videos details and save them to database
+* The crawler should crawl periodically and update with new data
 
 ## Types of Youtube Links
 
-> Playlist Ex : https://www.youtube.com/watch?v=ztiHRiFXtoc&list=PLvFsG9gYFxY_2tiOKgs7b2lSjMwR89ECb
-> channel  Ex : https://www.youtube.com/user/AsapSCIENCE/videos
+> * Playlist Ex : https://www.youtube.com/watch?v=ztiHRiFXtoc&list=PLvFsG9gYFxY_2tiOKgs7b2lSjMwR89ECb
+> * channel  Ex : https://www.youtube.com/user/AsapSCIENCE/videos
 
 ** OTHER FORMAT IS INVALID OR ERROR **
 
@@ -40,8 +40,9 @@ git clone git@github.com:MHNassar/youtube_crawling.git
 > 3 main modules . module allows you to logically organize your Python code .
 Grouping related code into a module makes the code easier to understand and use .
 
-- helpFunctions include functions help us work on videos (playlist / channels )
-- databaseFunctions include functions help us work on database  connect and insert data
+* main Start to program
+* helpFunctions include functions help us work on videos (playlist / channels )
+* databaseFunctions include functions help us work on database  connect and insert data
 
 ### Prerequisites
 
@@ -74,11 +75,11 @@ Please enter Youtube Link:  // youtube list or channel link
 ```
 ### Tasks
 
-[x] get playlist List or channel  items
-[x] get item details
-[x] save data in database
-[x] download thumb image and original images
-[ ] optional download videos
+- [x] get playlist List or channel  items
+- [x] get item details
+- [x] save data in database
+- [x] download thumb image and original images
+- [ ] optional download videos
 
 
 ## Author

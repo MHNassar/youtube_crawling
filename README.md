@@ -18,12 +18,23 @@ Crawl videos from YouTube channel/playlist  and save it in database
 
 ## Getting Started
 
-clone project
+1- clone project
 
 ```
 git clone git@github.com:MHNassar/youtube_crawling.git
 
 ```
+2- import youtupe_video.sql in mysql database
+3- Change you database server configurations in databaseFunctions
+
+```
+MySQLdb.connect("Host", "username", "password", "database_name")
+
+```
+
+
+
+
 ### Modules used in this project
 - MySQLdb
 - sys

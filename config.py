@@ -11,6 +11,7 @@ try:
     from bs4 import BeautifulSoup
     import types
     import re
+    from MySQLdb import IntegrityError as IntegrityError
 except:
     print('ERROR: Packages Not Install Please Run  $ pip install -r requirements.txt')
     sys.exit(1)

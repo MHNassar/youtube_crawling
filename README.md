@@ -28,13 +28,14 @@ Crawl videos from YouTube channel/playlist  and save it in database
 
 ### Project Structure
 
-> 3 main modules . module allows you to logically organize your Python code .
+> 4 main modules . module allows you to logically organize your Python code .
 Grouping related code into a module makes the code easier to understand and use .
 
 * config.py include database configurations and imported Modules 
 * main.py Start to program
 * helpFunctions.py include functions help us work on videos (playlist / channels )
 * databaseFunctions.py include functions help us work on database  connect and insert data
+* dowenloadFunctions.py include functions help us work on download inages and videos 
 
 ## Getting Started
 
@@ -88,6 +89,7 @@ cd /path/to/project
 python main.py
 
 Please enter Youtube Link:  // youtube list or channel link
+download videos? [y/n]:  // y or Y or yes or YES to dowenload 
 
 ```
 ### Tasks
@@ -96,7 +98,7 @@ Please enter Youtube Link:  // youtube list or channel link
 - [x] get item details
 - [x] save data in database
 - [x] download thumb image and original images
-- [ ] optional download videos
+- [x] optional download videos
 
 
 ## Author

@@ -2,7 +2,7 @@
 try:
     import thread
     from sys import version_info
-    import helpFunctions, databaseFunctions
+    import helpFunctions, databaseFunctions, dowenloadFunctions
     import MySQLdb
     import sys
     import pafy
@@ -12,6 +12,7 @@ try:
     import types
     import re
     from MySQLdb import IntegrityError as IntegrityError
+    import os
 except:
     print('ERROR: Packages Not Install Please Run  $ pip install -r requirements.txt')
     sys.exit(1)

@@ -35,26 +35,19 @@ def get_playlist_videos_list(url):
         config.sys.exit(1)
 
 
-def download_image(video, type):
-    try:
-        file_opener = config.urllib.URLopener()
-        path = type + "/"
-        filename = video['video_id'] + ".jpg"
-        file_opener.retrieve(video[type], path + filename)
-        return
-    except Exception, reason:
-        print "sorry there is %s" % (reason)
-        sys.exit(1)
-
-
-def get_video_data(video):
+def get_video_data(video, download_status):
     try:
         if isinstance(video, config.types.StringTypes):
             video = config.pafy.new(video)
         else:
             video = video['pafy']
+            print("please  Wait it take some time")
+
+        if config.dowenloadFunctions.check_download(download_status) == '1':
+            config.dowenloadFunctions.download_video(video)
 
         video_data = {
+
             "video_id": video.videoid,
             "url": "https://www.youtube.com/watch?v=" + video.videoid,
             "title": video.title,
@@ -96,3 +89,5 @@ def get_list_of_items(url):
     except Exception, reason:
         print "sorry there is %s" % (reason)
         config.sys.exit(1)
+
+

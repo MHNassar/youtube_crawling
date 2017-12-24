@@ -36,13 +36,14 @@ def save_video_database(database_connect, video_data):
         cursor[1].execute(sql, video_data.values())
         cursor[0].commit()
     except config.IntegrityError:
-        sql = update_video_database_if_duplicate_sql(video_data)
-        cursor[1].execute(sql)
-        cursor[0].commit()
-        return
-    except Exception, reason:
-        print "Oops! Something went wrong. Is %s" % (reason)
-        config.sys.exit(1)
+        try:
+            sql = update_video_database_if_duplicate_sql(video_data)
+            cursor[1].execute(sql)
+            cursor[0].commit()
+            return
+        except Exception:
+            print "Oops! Something went wrong."
+            config.sys.exit(1)
 
 
 def insert_video_database_sql(video_data):
@@ -53,7 +54,7 @@ def insert_video_database_sql(video_data):
 
 
 def update_video_database_if_duplicate_sql(video_data):
-    sql = "UPDATE videos SET url= '%s', title='%s', duration='%s', views='%s', thumb='%s', original_image='%s' WHERE video_id='%s' " % (
+    sql = 'UPDATE videos SET url= "%s", title="%s", duration="%s", views="%s", thumb="%s", original_image="%s" WHERE video_id="%s" ' % (
         video_data['url'], video_data['title'], video_data['duration'], video_data['views'], video_data['thumb'],
         video_data['original_image'], video_data['video_id'])
     return sql

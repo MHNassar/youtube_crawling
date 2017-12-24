@@ -128,7 +128,7 @@ Ummm... Link is wrong or invalid
 python main.py 
 https://www.youtube.com/watch?v=ztiHRiFXtoc&list=PLvFsG9gYFxY_2tiOKgs7b2lSjMwR89ECb
 download videos? [y/n]:  n
-Ummm... Link is wrong or invalid
+...
 
 ```
 > Links you can use in test 

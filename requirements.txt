@@ -2,3 +2,4 @@ pafy
 youtube-dl
 MySQL-python
 bs4
+pyspeedtest

@@ -15,6 +15,7 @@ Crawl videos from YouTube channel/playlist  and save it in database
 
 ** OTHER FORMAT IS INVALID OR ERROR **
 
+
 ### Modules used in this project
 - MySQLdb
 - sys
@@ -25,6 +26,7 @@ Crawl videos from YouTube channel/playlist  and save it in database
 - types
 - re
 - thread
+- pyspeedtest
 
 ### Project Structure
 
@@ -39,16 +41,26 @@ Grouping related code into a module makes the code easier to understand and use 
 
 ## Getting Started
 
+* Run This Commend to install mysql-config
+
+```
+sudo apt-get install libmysqlclient-dev
+``` 
+
 * clone project
 
 ```
 git clone git@github.com:MHNassar/youtube_crawling.git
+
+cd youtube_crawling/
+
 ```
 * Run This command to install packages 
 ```
 sudo pip install -r requirements.txt
 ```
-* import youtupe_video.sql in mysql database
+* create mysql database 
+* import youtube_video.sql in mysql database
 
 * Change you database server configurations in config.py
 
@@ -57,7 +69,7 @@ database_connect = {
     "db_host": "localhost",  # Host Name
     "db_user": "root",  # Database user
     "user_pass": "root",  # Password
-    "db_name": "youtupe_video",  # database Name
+    "db_name": "youtube_video",  # database Name
 
 }
 ```
@@ -86,6 +98,7 @@ sudo pip install MySQL-python
 To Run Project please follow this Steps
 ```
 cd /path/to/project
+
 python main.py
 
 Please enter Youtube Link:  // youtube list or channel link
@@ -100,6 +113,29 @@ download videos? [y/n]:  // y or Y or yes or YES to dowenload
 - [x] download thumb image and original images
 - [x] optional download videos
 
+### Test Cases 
+* Enter Error Link or not 
+```
+python main.py 
+Please enter Youtube Link: http://cmattoon.com/
+download videos? [y/n]:  n
+Ummm... Link is wrong or invalid
+
+```
+* Enter playlist link  or channel link
+
+```
+python main.py 
+https://www.youtube.com/watch?v=ztiHRiFXtoc&list=PLvFsG9gYFxY_2tiOKgs7b2lSjMwR89ECb
+download videos? [y/n]:  n
+Ummm... Link is wrong or invalid
+
+```
+> Links you can use in test 
+- https://www.youtube.com/watch?v=ztiHRiFXtoc&list=PLvFsG9gYFxY_2tiOKgs7b2lSjMwR89ECb
+- https://www.youtube.com/user/AsapSCIENCE/videos
+- https://www.youtube.com/watch?v=y_DrvAE0yJM&list=PLYp_Kd32XvcqWkOflFMciy0Kbgj64eII7
+- https://www.youtube.com/user/AsapSCIENCE/videos
 
 ## Author
 

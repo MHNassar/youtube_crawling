@@ -41,9 +41,11 @@ def save_video_database(database_connect, video_data):
             cursor[1].execute(sql)
             cursor[0].commit()
             return
-        except Exception:
-            print "Oops! Something went wrong."
+        except Exception, reason:
+            print "Oops! Something went wrong.is a %s" % (reason)
             config.sys.exit(1)
+    except Exception, reason:
+        print "Oops! Something went wrong. is a %s" % (reason)
 
 
 def insert_video_database_sql(video_data):

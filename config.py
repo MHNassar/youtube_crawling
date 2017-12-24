@@ -1,10 +1,11 @@
 # Import Modules
+import sys
+
 try:
     import thread
     from sys import version_info
     import helpFunctions, databaseFunctions, dowenloadFunctions
     import MySQLdb
-    import sys
     import pafy
     import urllib
     from urllib2 import urlopen
@@ -13,6 +14,7 @@ try:
     import re
     from MySQLdb import IntegrityError as IntegrityError
     import os
+    import pyspeedtest
 except:
     print('ERROR: Packages Not Install Please Run  $ pip install -r requirements.txt')
     sys.exit(1)

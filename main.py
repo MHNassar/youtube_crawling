@@ -1,7 +1,7 @@
 import config
 
-# Connect in database
-database_connect = config.databaseFunctions.connect_db()
+# check network speed
+config.helpFunctions.check_network_speed()
 
 # get link From user
 py3 = config.version_info[0] > 2
@@ -26,6 +26,7 @@ if len(link_items) > 0:
     config.helpFunctions.progress(0, len(link_items), 'Waiting')
 
     for idx, item in enumerate(link_items):
+        database_connect = config.databaseFunctions.connect_db()
         try:
             video_data = config.helpFunctions.get_video_data(item, download_or_not)
 
@@ -37,9 +38,7 @@ if len(link_items) > 0:
             status = `idx + 1` + " From " + `len(link_items)`
             config.helpFunctions.progress(idx + 1, len(link_items), status)
         except Exception:
-            import traceback
-
-            print traceback.format_exc()
+            print "Oops! Something went wrong."
 
     print "\n Crawling Finished"
 else:

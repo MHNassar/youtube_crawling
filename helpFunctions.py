@@ -41,7 +41,6 @@ def get_video_data(video, download_status):
             video = config.pafy.new(video)
         else:
             video = video['pafy']
-            print("please  Wait it take some time")
 
         if config.dowenloadFunctions.check_download(download_status) == '1':
             config.dowenloadFunctions.download_video(video)
@@ -91,3 +90,11 @@ def get_list_of_items(url):
         config.sys.exit(1)
 
 
+def check_network_speed():
+    print "Check Network Speed Please wait ... "
+    st = config.pyspeedtest.SpeedTest()
+    speed = st.ping()
+    print "Speed is %d ms" % (speed)
+    if speed < '10':
+        print "Poor network connection , Its may happen some errors"
+    return
